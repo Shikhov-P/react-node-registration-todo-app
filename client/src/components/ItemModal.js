@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
-import uuid from 'uuid';
 import { connect } from 'react-redux';
 import { addItem } from '../actions/itemActionCreators';
 import PropTypes from 'prop-types';

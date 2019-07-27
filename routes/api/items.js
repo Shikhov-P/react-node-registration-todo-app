@@ -4,7 +4,7 @@ const auth = require("../../middleware/auth");
 
 const Item = require('../../models/Item');
 
-router.get('/', auth, (req, res) => {
+router.get('/', (req, res) => {
     Item.find()
         .sort({date: -1})
         .then(items => res.json(items))
