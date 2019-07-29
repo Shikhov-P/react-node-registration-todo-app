@@ -50,6 +50,7 @@ export default function(state = initialState, action){
                 isLoading: false,
                 user: null
             }
-
+        default:
+            return state;
     }
 }

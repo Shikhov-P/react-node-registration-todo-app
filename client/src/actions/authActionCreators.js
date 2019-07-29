@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { returnErrors } from './errorActions';
+import { returnErrors } from './errorActionCreators';
 
 import {
     USER_LOADED,
@@ -20,13 +20,37 @@ export const loadUser = () => (dispatch, getState) => {
             type: USER_LOADED,
             payload: res.data
         }))
-        .catch(e => {
-            dispatch(returnErrors(e.response.data, e.response.status))
+        .catch(err => {
+            dispatch(returnErrors(err.response.data, err.response.status))
             dispatch({
                 type: AUTH_ERROR
             })
         })
 };
+
+
+export const register = ({name, email, password, repeatPassword}) => dispatch => {
+    const config = {
+        header: {
+            "Content-Type": "application/json"
+        }
+    };
+
+    const body = JSON.stringify({name, email, password, repeatPassword});
+
+    axios.post("/api/users", body, config)
+        .then(res => dispatch({
+            type: REGISTER_SUCCESS,
+            payload: res.data
+        }))
+        .catch(err => {
+            dispatch(returnErrors(err.response.data, err.response.status))
+            dispatch({
+                type: REGISTER_FAIL
+            })
+
+        })
+}
 
 
 export const getTokenConfig = getState => {

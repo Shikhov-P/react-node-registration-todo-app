@@ -11,22 +11,24 @@ import './App.css';
 
 import { loadUser } from "./actions/authActionCreators";
 
-function App() {
+class App extends React.Component {
     componentDidMount(){
         store.dispatch(loadUser());
-    }
+    };
 
-  return (
-      <Provider store={store}>
-          <div className="App">
-              <AppNavbar />
-              <Container>
-                  <ItemModal />
-                  <MainList />
-              </Container>
-          </div>
-      </Provider>
-  );
+    render(){
+        return (
+            <Provider store={store}>
+                <div className="App">
+                    <AppNavbar />
+                    <Container>
+                        <ItemModal />
+                        <MainList />
+                    </Container>
+                </div>
+            </Provider>
+        )
+    }
 }
 
 export default App;

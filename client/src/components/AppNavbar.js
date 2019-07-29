@@ -1,4 +1,5 @@
 import React from 'react';
+import RegistrationModal from './RegistrationModal';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Container } from 'reactstrap';
 
 class AppNavbar extends React.Component {
@@ -24,6 +25,9 @@ class AppNavbar extends React.Component {
                             <Nav className={"ml-auto"} navbar>
                                 <NavItem>
                                     <NavLink href={"https://githib.com"}>Github</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <RegistrationModal />
                                 </NavItem>
                             </Nav>
                         </Collapse>
